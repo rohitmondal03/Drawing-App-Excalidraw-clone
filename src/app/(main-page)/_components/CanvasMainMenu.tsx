@@ -5,7 +5,7 @@ export default function CanvasMainMenu() {
   return (
     <MainMenu>
       <MainMenu.DefaultItems.Export />
-      <MainMenu.DefaultItems.Socials />
+      <MainMenu.DefaultItems.Socials/>
       <MainMenu.DefaultItems.ChangeCanvasBackground />
       <MainMenu.DefaultItems.ClearCanvas />
       <MainMenu.DefaultItems.SaveToActiveFile />
