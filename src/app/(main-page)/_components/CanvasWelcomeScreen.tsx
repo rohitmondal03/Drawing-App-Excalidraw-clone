@@ -11,7 +11,9 @@ export default function CanvasWelcomeScreen() {
         {/* <WelcomeScreen.Center.Logo /> */}
 
         <WelcomeScreen.Center.Heading>
-          <h1 className="text-3xl font-bold">Welcome to Drawing App</h1>
+          <h1 className="text-3xl font-bold">
+            Drawing App ! A good one...
+          </h1>
         </WelcomeScreen.Center.Heading>
 
         <WelcomeScreen.Center.Menu>

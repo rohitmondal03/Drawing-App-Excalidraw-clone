@@ -17,16 +17,18 @@ export default function Icon() {
       <div
         style={{
           fontSize: 24,
-          background: 'black',
+          background: 'white',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: 'white',
+          color: 'black',
+          fontWeight: "bolder",
+          borderRadius: "5px",
         }}
       >
-        AB
+        !
       </div>
     ),
     {
