@@ -6,8 +6,8 @@ import { LiveCollaborationTrigger, } from "@excalidraw/excalidraw";
 import { AppState, BinaryFiles, ExcalidrawImperativeAPI, LibraryItems } from "@excalidraw/excalidraw/types/types";
 import { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types";
 
-const CanvasMainMenu= dynamic(() => import("./CanvasMainMenu"))
-const CanvasWelcomeScreen= dynamic(() => import("./CanvasWelcomeScreen"))
+import CanvasMainMenu from "./CanvasMainMenu";
+import CanvasWelcomeScreen from "./CanvasWelcomeScreen";
 
 
 const Excalidraw = dynamic(
@@ -25,7 +25,7 @@ export default function DrawingCanvas() {
   return (
     <Excalidraw
     theme="dark"
-    isCollaborating={true}
+    // isCollaborating={true}
     initialData={{
       elements: [],
       scrollToContent: true,
@@ -45,7 +45,7 @@ export default function DrawingCanvas() {
     }}
     renderTopRightUI={() => (
       <LiveCollaborationTrigger
-        isCollaborating={true}
+        isCollaborating={false}
         onSelect={() => alert("collaborating...")}
       />
     )}
