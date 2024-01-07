@@ -17,14 +17,21 @@ export default function CanvasWelcomeScreen() {
         </WelcomeScreen.Center.Heading>
 
         <WelcomeScreen.Center.Menu>
-          <WelcomeScreen.Center.MenuItemLink href="https://github.com/excalidraw/excalidraw">
+          {/* <WelcomeScreen.Center.MenuItemLink href="https://github.com/excalidraw/excalidraw">
             Excalidraw GitHub
-          </WelcomeScreen.Center.MenuItemLink>
+          </WelcomeScreen.Center.MenuItemLink> */}
           <WelcomeScreen.Center.MenuItemHelp />
           <WelcomeScreen.Center.MenuItemLoadScene />
           <WelcomeScreen.Center.MenuItemLiveCollaborationTrigger
             onSelect={() => alert("colaborating")}
           />
+          <WelcomeScreen.Center.MenuItem
+            icon={<div>Cr</div>}
+            onSelect={() => console.log("hello")}
+            className="flex items-center justify-center"
+          >
+            <div className="mt-[4px]">Credits: Excalidraw</div>
+          </WelcomeScreen.Center.MenuItem>
         </WelcomeScreen.Center.Menu>
       </WelcomeScreen.Center>
     </WelcomeScreen>

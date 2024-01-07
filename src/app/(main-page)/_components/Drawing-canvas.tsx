@@ -1,20 +1,20 @@
 "use client"
 
 import dynamic from "next/dynamic";
-import { LiveCollaborationTrigger, DefaultSidebar } from "@excalidraw/excalidraw";
-
-import CanvasMainMenu from "./CanvasMainMenu";
-import CanvasWelcomeScreen from "./CanvasWelcomeScreen";
 import { useState } from "react";
-import { AppState, BinaryFiles, ExcalidrawImperativeAPI } from "@excalidraw/excalidraw/types/types";
+import { LiveCollaborationTrigger, } from "@excalidraw/excalidraw";
+import { AppState, BinaryFiles, ExcalidrawImperativeAPI, LibraryItems } from "@excalidraw/excalidraw/types/types";
 import { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types";
+
+const CanvasMainMenu= dynamic(() => import("./CanvasMainMenu"))
+const CanvasWelcomeScreen= dynamic(() => import("./CanvasWelcomeScreen"))
 
 
 const Excalidraw = dynamic(
   async () => (await import("@excalidraw/excalidraw")).Excalidraw,
   {
     ssr: false,
-  },
+  }
 );
 
 
@@ -24,38 +24,34 @@ export default function DrawingCanvas() {
 
   return (
     <Excalidraw
-      theme="dark"
-      initialData={{
-        elements: [],
-        scrollToContent: true,
-      }}
-      UIOptions={{
-        canvasActions: {
-          changeViewBackgroundColor: true,
-          clearCanvas: true,
-          loadScene: true,
-          saveToActiveFile: true,
-          saveAsImage: true,
-          toggleTheme: true,
-          export: {
-            saveFileToDisk: true,
-          },
+    theme="dark"
+    isCollaborating={true}
+    initialData={{
+      elements: [],
+      scrollToContent: true,
+    }}
+    UIOptions={{
+      canvasActions: {
+        changeViewBackgroundColor: true,
+        clearCanvas: true,
+        loadScene: true,
+        saveToActiveFile: true,
+        saveAsImage: true,
+        toggleTheme: true,
+        export: {
+          saveFileToDisk: true,
         },
-      }}
-      renderTopRightUI={() => (
-        <LiveCollaborationTrigger
-          isCollaborating={false}
-          onSelect={() => alert("collaborating...")}
-        />
-      )}
-      excalidrawAPI={(api: ExcalidrawImperativeAPI) => {
-        setExcAPI(api)
-      }}
-      onChange={
-        (elements: readonly ExcalidrawElement[], appState: AppState, files: BinaryFiles) => {
-          console.log(elements);
-        }
-      }
+      },
+    }}
+    renderTopRightUI={() => (
+      <LiveCollaborationTrigger
+        isCollaborating={true}
+        onSelect={() => alert("collaborating...")}
+      />
+    )}
+    excalidrawAPI={(api: ExcalidrawImperativeAPI) => {
+      setExcAPI(api)
+    }}
     >
       <CanvasMainMenu />
       <CanvasWelcomeScreen />

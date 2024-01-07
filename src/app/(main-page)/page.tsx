@@ -1,4 +1,8 @@
-import DrawingCanvas from "./_components/Drawing-canvas"
+import dynamic from "next/dynamic"
+
+const DrawingCanvas= dynamic(() => import("./_components/Drawing-canvas"), {
+  ssr: false,
+})
 
 
 export default function HomePage() {
