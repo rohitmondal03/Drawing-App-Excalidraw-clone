@@ -20,12 +20,13 @@ const Excalidraw = dynamic(
 
 export default function DrawingCanvas() {
   const [excAPI, setExcAPI] = useState<ExcalidrawImperativeAPI | null>(null);
+  const [isCollaboratingMode, setCollaborartingMode]= useState<boolean>(false);
 
 
   return (
     <Excalidraw
     theme="dark"
-    // isCollaborating={true}
+    isCollaborating={isCollaboratingMode}
     initialData={{
       elements: [],
       scrollToContent: true,
@@ -45,8 +46,8 @@ export default function DrawingCanvas() {
     }}
     renderTopRightUI={() => (
       <LiveCollaborationTrigger
-        isCollaborating={false}
-        onSelect={() => alert("collaborating...")}
+        isCollaborating={isCollaboratingMode}
+        onSelect={() => setCollaborartingMode((prev) => !prev)}
       />
     )}
     excalidrawAPI={(api: ExcalidrawImperativeAPI) => {
