@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 
-import { SITE_AAP_NAME, SITE_DESCRIPTION, SITE_WEBSITE } from '@/config/site'
+import { SITE_AAP_NAME, SITE_DESC, SITE_WEBSITE, SITE_TITLE } from '@/config/site'
 import './globals.css'
 
 
 
 export const metadata: Metadata = {
-  title: SITE_DESCRIPTION,
-  description: "A online, yet simple whiteboarding application.",
-  applicationName: "drww",
+  title: SITE_TITLE,
+  description: SITE_DESC,
+  applicationName: SITE_AAP_NAME,
   generator: "Next.js",
   authors: {
     name: "Rohit Mondal",
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     siteName: SITE_AAP_NAME,
-    title: SITE_AAP_NAME,
-    description: SITE_DESCRIPTION,
+    title: SITE_TITLE,
+    description: SITE_DESC,
     url: SITE_WEBSITE,
   }
 }
