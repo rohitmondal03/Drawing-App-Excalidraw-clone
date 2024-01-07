@@ -7,7 +7,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: SITE_DESCRIPTION,
-  description: SITE_DESCRIPTION,
+  description: "A online, yet simple whiteboarding application.",
   applicationName: "drww",
   generator: "Next.js",
   authors: {
