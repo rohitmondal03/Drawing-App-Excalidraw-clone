@@ -12,7 +12,7 @@ export const size = {
 export const contentType = 'image/png'
 
 // Image generation
-export default async function Image() {
+export default async function OGImage() {
   return new ImageResponse(
     (
       // ImageResponse JSX element
