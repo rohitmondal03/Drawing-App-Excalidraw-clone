@@ -19,6 +19,15 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESC,
     url: SITE_WEBSITE,
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "Rohit Mondal",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+    site: SITE_WEBSITE,
+  },
+  metadataBase: {
   }
 }
 
