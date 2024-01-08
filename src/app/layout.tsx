@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESC,
   applicationName: SITE_AAP_NAME,
+  metadataBase: new URL(SITE_WEBSITE),
   generator: "Next.js",
   authors: {
     name: "Rohit Mondal",
@@ -27,6 +28,12 @@ export const metadata: Metadata = {
     description: SITE_DESC,
     site: SITE_WEBSITE,
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: SITE_TITLE,
+  },
+  robots: "index, follow"
 }
 
 
