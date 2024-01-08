@@ -27,8 +27,6 @@ export const metadata: Metadata = {
     description: SITE_DESC,
     site: SITE_WEBSITE,
   },
-  metadataBase: {
-  }
 }
 
 
