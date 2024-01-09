@@ -3,9 +3,10 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { LiveCollaborationTrigger, } from "@excalidraw/excalidraw";
-import { AppState, BinaryFiles, ExcalidrawImperativeAPI, LibraryItems } from "@excalidraw/excalidraw/types/types";
+import { AppState, BinaryFiles, ExcalidrawImperativeAPI, LibraryItem, LibraryItems } from "@excalidraw/excalidraw/types/types";
 import { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types";
 
+import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 import CanvasMainMenu from "./CanvasMainMenu";
 import CanvasWelcomeScreen from "./CanvasWelcomeScreen";
 
@@ -21,6 +22,7 @@ const Excalidraw = dynamic(
 export default function DrawingCanvas() {
   const [excAPI, setExcAPI] = useState<ExcalidrawImperativeAPI | null>(null);
   const [isCollaboratingMode, setCollaborartingMode] = useState<boolean>(false);
+  const { getItem, setItem } = useLocalStorage(String(process.env.NEXT_PUBLIC_LOCAL_STORAGE_KEY))
 
 
   return (
@@ -28,7 +30,7 @@ export default function DrawingCanvas() {
       theme="dark"
       isCollaborating={isCollaboratingMode}
       initialData={{
-        elements: [],
+        elements: getItem(),
         scrollToContent: true,
       }}
       UIOptions={{
@@ -53,8 +55,11 @@ export default function DrawingCanvas() {
       excalidrawAPI={(api: ExcalidrawImperativeAPI) => {
         setExcAPI(api)
       }}
-      onChange={() => {
-        console.log(excAPI?.getSceneElements())
+      onChange={(a, b, c) => {
+        const nonDeletedSceneElements = excAPI?.getSceneElements();
+        setItem(nonDeletedSceneElements);
+        console.log(a);
+        console.log(b);
       }}
     >
       <CanvasMainMenu />
