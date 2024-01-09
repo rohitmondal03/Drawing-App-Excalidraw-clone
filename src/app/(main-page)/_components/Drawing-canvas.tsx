@@ -20,39 +20,42 @@ const Excalidraw = dynamic(
 
 export default function DrawingCanvas() {
   const [excAPI, setExcAPI] = useState<ExcalidrawImperativeAPI | null>(null);
-  const [isCollaboratingMode, setCollaborartingMode]= useState<boolean>(false);
+  const [isCollaboratingMode, setCollaborartingMode] = useState<boolean>(false);
 
 
   return (
     <Excalidraw
-    theme="dark"
-    isCollaborating={isCollaboratingMode}
-    initialData={{
-      elements: [],
-      scrollToContent: true,
-    }}
-    UIOptions={{
-      canvasActions: {
-        changeViewBackgroundColor: true,
-        clearCanvas: true,
-        loadScene: true,
-        saveToActiveFile: true,
-        saveAsImage: true,
-        toggleTheme: true,
-        export: {
-          saveFileToDisk: true,
+      theme="dark"
+      isCollaborating={isCollaboratingMode}
+      initialData={{
+        elements: [],
+        scrollToContent: true,
+      }}
+      UIOptions={{
+        canvasActions: {
+          changeViewBackgroundColor: true,
+          clearCanvas: true,
+          loadScene: true,
+          saveToActiveFile: true,
+          saveAsImage: true,
+          toggleTheme: true,
+          export: {
+            saveFileToDisk: true,
+          },
         },
-      },
-    }}
-    renderTopRightUI={() => (
-      <LiveCollaborationTrigger
-        isCollaborating={isCollaboratingMode}
-        onSelect={() => setCollaborartingMode((prev) => !prev)}
-      />
-    )}
-    excalidrawAPI={(api: ExcalidrawImperativeAPI) => {
-      setExcAPI(api)
-    }}
+      }}
+      renderTopRightUI={() => (
+        <LiveCollaborationTrigger
+          isCollaborating={isCollaboratingMode}
+          onSelect={() => setCollaborartingMode((prev) => !prev)}
+        />
+      )}
+      excalidrawAPI={(api: ExcalidrawImperativeAPI) => {
+        setExcAPI(api)
+      }}
+      onChange={() => {
+        console.log(excAPI?.getSceneElements())
+      }}
     >
       <CanvasMainMenu />
       <CanvasWelcomeScreen />

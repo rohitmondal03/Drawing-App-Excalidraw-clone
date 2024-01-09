@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ReactNode } from 'react'
 
 import { SITE_AAP_NAME, SITE_DESC, SITE_WEBSITE, SITE_TITLE } from '@/config/site'
 import './globals.css'
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <html lang="en">
