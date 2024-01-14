@@ -1,8 +1,8 @@
 "use client"
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
-import { LiveCollaborationTrigger, } from "@excalidraw/excalidraw";
+import { useEffect, useState } from "react";
+import { LiveCollaborationTrigger} from "@excalidraw/excalidraw";
 import { AppState, BinaryFiles, ExcalidrawImperativeAPI, LibraryItem, LibraryItems } from "@excalidraw/excalidraw/types/types";
 import { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types";
 
@@ -27,6 +27,9 @@ export default function DrawingCanvas() {
 
   return (
     <Excalidraw
+      excalidrawAPI={(api: ExcalidrawImperativeAPI) => {
+        setExcAPI(api)
+      }}
       theme="dark"
       isCollaborating={isCollaboratingMode}
       initialData={{
@@ -52,14 +55,9 @@ export default function DrawingCanvas() {
           onSelect={() => setCollaborartingMode((prev) => !prev)}
         />
       )}
-      excalidrawAPI={(api: ExcalidrawImperativeAPI) => {
-        setExcAPI(api)
-      }}
-      onChange={(a, b, c) => {
+      onChange={() => {
         const nonDeletedSceneElements = excAPI?.getSceneElements();
         setItem(nonDeletedSceneElements);
-        console.log(a);
-        console.log(b);
       }}
     >
       <CanvasMainMenu />
